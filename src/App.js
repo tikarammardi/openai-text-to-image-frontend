@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [imageUrl, setImageUrl] = useState("https://oaidalleapiprodscus.blob.core.windows.net/private/org-2gUYg1DGUYdDpxImMRqMxh8e/user-Qt30HzkeIHDM08Z4xjfj84Qo/img-zeHQjmANlZ4WLJUE0Wl1CvMD.png?st=2023-03-11T15%3A11%3A06Z&se=2023-03-11T17%3A11%3A06Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-10T20%3A43%3A14Z&ske=2023-03-11T20%3A43%3A14Z&sks=b&skv=2021-08-06&sig=XHYvZIGYOYiZsSzFIjCJ9lgxPplcCG6rRoLs14mdtho%3D")
+  const [imageUrl, setImageUrl] = useState("https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg")
   const [imageDescription, setImageDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null)
@@ -15,7 +15,7 @@ function App() {
     try {
       if (!imageDescription) return;
 
-      const response = await fetch('http://localhost:5000/api/generate', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_API_ENDPOINT}/api/generate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
